@@ -16,8 +16,9 @@ public class ThreadPoolManager {
         return threadPoolManager;
     }
 
-    // 线程安全
+    // 用于存放外部添加的任务，线程安全
     private LinkedBlockingQueue<Runnable> mQueue = new LinkedBlockingQueue<>();
+    // 存放执行失败的task，用于重试机制
     private DelayQueue<HttpTask> mDelayQueue = new DelayQueue<>();
 
     // 线程池
