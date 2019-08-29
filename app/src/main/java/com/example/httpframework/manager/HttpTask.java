@@ -51,6 +51,11 @@ public class HttpTask<T> implements Runnable, Delayed {
         this.retryCount = retryCount;
     }
 
+    /**
+     * getDelay也就是剩余时间为0的时候，该元素才有资格被消费者从队列中取出来
+     * @param unit
+     * @return
+     */
     @Override
     public long getDelay(TimeUnit unit) {
         return unit.convert(this.delayTime-System.currentTimeMillis(),TimeUnit.MILLISECONDS);
